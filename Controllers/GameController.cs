@@ -17,13 +17,13 @@ namespace MasterMind.Controllers
         {
             _context = context;
         }
-
+        //Instantiate Models - AJ Raaths 
         ColorSelection colorSelectionModel = new ColorSelection();
         GameColors gameColorsModel = new GameColors();
         GameViewModel gameViewModel = new GameViewModel();
         public IActionResult Index(ColorSelection colorSelection)
         {
-
+            //Generate 4 random numbers from 6 colors
             if (gameViewModel.GameColors == null)
             {   
                 string[] gameColors = new string[] { "red", "yellow", "blue", "green", "black", "white" };
@@ -48,8 +48,11 @@ namespace MasterMind.Controllers
         [HttpPost]
         public IActionResult GetResults(ColorSelection colorSelection)
         {
+            //Get the new random generated numbers from db context - AJ Raaths
             gameColorsModel = _context.GameColors.First();
+            //Instantiate the getHints class
             var getHints = new GetHints();
+            //Populate the colorSelection model with new chosen colors - AJ Raaths
             colorSelectionModel = colorSelection;
             colorSelectionModel.CorrectColorCorrectPosition = getHints.CorrectPositionsCorrectColors(colorSelection, gameColorsModel);
             colorSelectionModel.CorrectColorWrongPosition = getHints.WrongPositionCorrectColors(colorSelection, gameColorsModel);
@@ -57,7 +60,7 @@ namespace MasterMind.Controllers
             gameViewModel.GameColors = gameColorsModel;
             _context.Add(colorSelection);
             _context.SaveChanges();
-
+            //Send view model to new Hints partial view - AJ Raaths
             return PartialView("Hints",gameViewModel); 
         }
     }

@@ -8,6 +8,7 @@ namespace MasterMind.BusinessLogic
 {
     public class GetHints
     {
+        //Used to obtain the number of colors in their respective right positions- AJ Raaths
         public int CorrectPositionsCorrectColors(ColorSelection colorSelection , GameColors gameColors)
         {
             int result = 0;
@@ -30,6 +31,7 @@ namespace MasterMind.BusinessLogic
 
             return result;
         }
+        //Used to obtain the number of colors that are correct but situated in a wrong position - AJ Raaths
         public int WrongPositionCorrectColors(ColorSelection colorSelection, GameColors gameColors)
         {
             int result = 0;

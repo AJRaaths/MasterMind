@@ -183,11 +183,11 @@
         var count = 0;
         var rowPos = 1;
         var roundColors = [];
-
+           //reload when game is over
         function EndGame() {
             window.location.reload();
         }
-
+        //color selection - populate array and change colors in view
         function ChangeColor(color, pos) {
         count++;
             console.log(window.location);
@@ -219,7 +219,7 @@
                     roundColors.push('white');
                     break;
             }
-
+            //Display Game Colors when game is over
             function GameOver(id) {
                 var x = document.getElementById(id);
                 if (x.style.display === "none") {
@@ -229,7 +229,7 @@
                     x.style.display = "none";
                 }
             }
-
+            //Generate Hints after 4 colors are selected
             if (count == 4)
             {
                 rowPos++;
@@ -240,23 +240,23 @@
                     GameOver('GameColors');
                     GameOver('Replay');
                 }
-
+                //Row/Turn guide
                 if (rowPos < 12) {
                     document.getElementById('row' + rowPos).style.color = 'hotpink';
                 }
                 count = 0;
-
+                //Get post action url
                 var urlPost = "@Url.Action("GetResults","Game")";
-
+                //populate model to pass to controller to generate a new partial view for the hints
                 var model = {
                     PlayerColor1: roundColors[0],
                     PlayerColor2: roundColors[1],
                     PlayerColor3: roundColors[2],
                     PlayerColor4: roundColors[3],
                 };
-
+                //Empty chosen colors for new turn
                 roundColors = [];
-
+                //call post request with populated model
                 $.ajax({
                     url: urlPost,
                     type: 'POST',
