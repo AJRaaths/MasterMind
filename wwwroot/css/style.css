@@ -1,0 +1,36 @@
+
+body {
+    background-color: pink;
+}
+
+.table {
+    width: auto;
+    position: center;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 25px;
+    border-collapse: collapse;
+    box-shadow: 10px 10px;
+}
+.table-dark td, .table-dark th, .table-dark thead th, .table-dark thead tr {
+    border: none;
+    line-height: 70px;
+}
+.active {
+    pointer-events:visibleStroke;
+}
+.noHover {
+    pointer-events: none;
+}
+.button {
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+}
+.hints {
+    width:85px;
+}
+
+

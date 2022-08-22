@@ -1,0 +1,283 @@
+﻿@model MasterMind.ViewModels.GameViewModel
+@{
+    string row = "1";
+    string gc1 = Model.GameColors.GameColor1;
+    string gc2 = Model.GameColors.GameColor2;
+    string gc3 = Model.GameColors.GameColor3;
+    string gc4 = Model.GameColors.GameColor4;
+
+}
+<div class="text-center">
+    <h1 class="display-4">Welcome to the Game</h1>
+
+</div>
+<head>
+    <title>Mastermind</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <div id="dvPartial"></div>
+
+
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-5">
+                    <h2 class="heading-section">Mastermind</h2>
+                    <div>
+                        <button id="Replay" class="btn btn-danger m-3" style="display:none" onclick="EndGame()">Aww you lost this time, try again?</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-wrap">
+                        <table class="table table-bordered table-dark table-hover">
+                            <thead id ="GameColors" style="display:none">
+                                <tr  class="noHover">
+                                    <th scope="row" id="row11">#</th>
+                                    <td><i id="game-color1" class="fa fa-circle hidden" style="color:@gc1" aria-hidden="true"></i></td>
+                                    <td><i id="game-color2" class="fa fa-circle hidden" style="color:@gc2" aria-hidden="true"></i></td>
+                                    <td><i id="game-color3" class="fa fa-circle hidden" style="color:@gc3" aria-hidden="true"></i></td>
+                                    <td><i id="game-color4" class="fa fa-circle hidden" style="color:@gc4" aria-hidden="true"></i></td>
+                                    <td class="hints"></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="noHover" id="row10">
+                                    <th scope="row">10</th>
+                                    <td><i id="row10col1" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row10col2" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row10col3" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row10col4" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td data-html="true" class="hints">
+                                        <div id="row10col5"></div>
+                                    </td>
+                                </tr>
+                                <tr class="noHover" id="row9">
+                                    <th scope="row">9</th>
+                                    <td><i id="row9col1" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row9col2" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row9col3" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row9col4" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td data-html="true" class="hints">
+                                        <div id="row9col5"></div>
+                                    </td>
+                                </tr>
+                                <tr class="noHover" id="row8">
+                                    <th scope="row">8</th>
+                                    <td><i id="row8col1" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row8col2" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row8col3" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row8col4" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td data-html="true" class="hints">
+                                        <div id="row8col5"></div>
+                                    </td>
+                                </tr>
+                                <tr class="noHover" id="row7">
+                                    <th scope="row">7</th>
+                                    <td><i id="row7col1" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row7col2" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row7col3" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row7col4" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td data-html="true" class="hints">
+                                        <div id="row7col5"></div>
+                                    </td>
+                                </tr>
+                                <tr class="noHover" id="row6">
+                                    <th scope="row">6</th>
+                                    <td><i id="row6col1" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row6col2" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row6col3" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row6col4" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td data-html="true" class="hints">
+                                        <div id="row6col5"></div>
+                                    </td>
+                                </tr>
+                                <tr class="noHover" id="row5">
+                                    <th scope="row">5</th>
+                                    <td><i id="row5col1" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row5col2" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row5col3" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row5col4" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td data-html="true" class="hints">
+                                        <div id="row5col5"></div>
+                                    </td>
+                                </tr>
+                                <tr class="noHover" id="row4">
+                                    <th scope="row">4</th>
+                                    <td><i id="row4col1" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row4col2" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row4col3" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row4col4" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td data-html="true" class="hints">
+                                        <div id="row4col5"></div>
+                                    </td>
+                                </tr>
+                                <tr class="noHover" id="row3">
+                                    <th scope="row">3</th>
+                                    <td><i id="row3col1" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row3col2" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row3col3" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row3col4" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td data-html="true" class="hints">
+                                        <div id="row3col5"></div>
+                                    </td>
+                                </tr>
+                                <tr class="noHover" id="row2">
+                                    <th scope="row">2</th>
+                                    <td><i id="row2col1" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row2col2" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row2col3" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row2col4" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td data-html="true" class="hints">
+                                        <div id="row2col5"></div>
+                                    </td>
+                                </tr>
+                                <tr class="noHover" id="row1" style="color:hotpink; height:60px">
+                                    <th scope="row">1</th>
+                                    <td><i id="row1col1" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row1col2" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row1col3" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td><i id="row1col4" class="fa fa-circle" style="color:lavender" aria-hidden="true"></i></td>
+                                    <td class="hints">
+                                        <div id="row1col5"></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <table class="table table-bordered table-dark table-hover">
+        <thead>
+            <tr>
+                <th><button onclick="ChangeColor('red', @row)" style="background-color: Transparent; background-repeat: no-repeat; border: none; cursor: pointer; overflow: hidden; "><i class="fa fa-circle" style="color:red" ; aria-hidden="true"></i></button></th>
+                <th><button onclick="ChangeColor('yellow', @row )" style="background-color: Transparent; background-repeat: no-repeat; border: none; cursor: pointer; overflow: hidden; "><i class="fa fa-circle" style="color:yellow" ; aria-hidden="true"></i></button></th>
+                <th><button onclick="ChangeColor('blue', @row)" style="background-color: Transparent; background-repeat: no-repeat; border: none; cursor: pointer; overflow: hidden; "><i class="fa fa-circle" style="color:blue" ; aria-hidden="true"></i></button></th>
+                <th><button onclick="ChangeColor('green', @row)" style="background-color: Transparent; background-repeat: no-repeat; border: none; cursor: pointer; overflow: hidden; "><i class="fa fa-circle" style="color:green" ; aria-hidden="true"></i></button></th>
+                <th><button onclick="ChangeColor('black', @row)" style="background-color: Transparent; background-repeat: no-repeat; border: none; cursor: pointer; overflow: hidden; "><i class="fa fa-circle" style="color:black" ; aria-hidden="true"></i></button></th>
+                <th><button onclick="ChangeColor('white', @row)" style="background-color: Transparent; background-repeat: no-repeat; border: none; cursor: pointer; overflow: hidden; "><i class="fa fa-circle" style="color:white" ; aria-hidden="true"></i></button></th>
+            </tr>
+
+        </thead>
+    </table>
+
+
+    <script type="text/javascript">
+        var count = 0;
+        var rowPos = 1;
+        var roundColors = [];
+
+        function EndGame() {
+            window.location.reload();
+        }
+
+        function ChangeColor(color, pos) {
+        count++;
+            console.log(window.location);
+
+            switch (color)
+            {
+                case 'red':
+                    document.getElementById('row' + rowPos + 'col' + count.toString()).style.color = 'Red';
+                    roundColors.push('red');
+                    break;
+                case 'yellow':
+                    document.getElementById('row' + rowPos + 'col' + count.toString()).style.color = 'Yellow';
+                    roundColors.push('yellow');
+                    break;
+                case 'blue':
+                    document.getElementById('row' + rowPos + 'col' + count.toString()).style.color = 'Blue';
+                    roundColors.push('blue');
+                    break;
+                case 'green':
+                    document.getElementById('row' + rowPos + 'col' + count.toString()).style.color = 'Green';
+                    roundColors.push('green');
+                    break;
+                case 'black':
+                    document.getElementById('row' + rowPos + 'col' + count.toString()).style.color = 'Black';
+                    roundColors.push('black');
+                    break;
+                case 'white':
+                    document.getElementById('row' + rowPos + 'col' + count.toString()).style.color = 'White';
+                    roundColors.push('white');
+                    break;
+            }
+
+            function GameOver(id) {
+                var x = document.getElementById(id);
+                if (x.style.display === "none") {
+                    x.style.display = "";
+
+                } else {
+                    x.style.display = "none";
+                }
+            }
+
+            if (count == 4)
+            {
+                rowPos++;
+                console.log(rowPos);
+
+                if (rowPos == 11)
+                {
+                    GameOver('GameColors');
+                    GameOver('Replay');
+                }
+
+                if (rowPos < 12) {
+                    document.getElementById('row' + rowPos).style.color = 'hotpink';
+                }
+                count = 0;
+
+                var urlPost = "@Url.Action("GetResults","Game")";
+
+                var model = {
+                    PlayerColor1: roundColors[0],
+                    PlayerColor2: roundColors[1],
+                    PlayerColor3: roundColors[2],
+                    PlayerColor4: roundColors[3],
+                };
+
+                roundColors = [];
+
+                $.ajax({
+                    url: urlPost,
+                    type: 'POST',
+                    dataType: "html",
+                    data: model,
+
+                    success: function (ret) {
+                        $('#row' + (rowPos-1) + 'col5').html(ret);
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.log('Error in Operation');
+                    }
+                });
+            }
+        }
+    </script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+

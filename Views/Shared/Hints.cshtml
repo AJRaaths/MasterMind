@@ -1,0 +1,40 @@
+﻿@model MasterMind.ViewModels.GameViewModel
+@{ 
+    var cccp = Model.ColorSelection.CorrectColorCorrectPosition;
+}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <div class="row m-2">
+        @for (int i = 0; i < Model.ColorSelection.CorrectColorCorrectPosition; i++)
+        {
+            <i class="fa fa-circle m-1" style="color:black" ; aria-hidden="true"></i>
+        }
+        @for (int i = 0; i < Model.ColorSelection.CorrectColorWrongPosition; i++)
+        {
+            <i class="fa fa-circle m-1" style="color:white" ; aria-hidden="true"></i>
+        }
+    </div>
+
+    <script type="text/javascript">
+        if (@cccp == 4) {          
+            if (!alert('You Won!!!')) { window.location.reload(); }
+        }
+    </script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+
