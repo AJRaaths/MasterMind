@@ -48,14 +48,16 @@ namespace MasterMind.Controllers
         [HttpPost]
         public IActionResult GetResults(ColorSelection colorSelection)
         {
+            int[] res = new int[2];
             //Get the new random generated numbers from db context - AJ Raaths
-            gameColorsModel = _context.GameColors.First();
+            gameColorsModel = _context.GameColors.OrderBy(x => x.GameId).Last();
             //Instantiate the getHints class
             var getHints = new GetHints();
             //Populate the colorSelection model with new chosen colors - AJ Raaths
             colorSelectionModel = colorSelection;
-            colorSelectionModel.CorrectColorCorrectPosition = getHints.CorrectPositionsCorrectColors(colorSelection, gameColorsModel);
-            colorSelectionModel.CorrectColorWrongPosition = getHints.WrongPositionCorrectColors(colorSelection, gameColorsModel);
+            res = getHints.CorrectPositionsCorrectColors(colorSelection, gameColorsModel);
+            colorSelectionModel.CorrectColorCorrectPosition = res[0];
+            colorSelectionModel.CorrectColorWrongPosition = res[1];
             gameViewModel.ColorSelection = colorSelectionModel;
             gameViewModel.GameColors = gameColorsModel;
             _context.Add(colorSelection);
